@@ -16,8 +16,10 @@ from PIL import Image
 import cv2
 from tensorflow.python.ops import control_flow_ops
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+import imp
+import importlib
+importlib.reload(sys)
+#sys.setdefaultencoding('utf-8')
 
 logger = logging.getLogger('Training a chinese write char recognition')
 logger.setLevel(logging.INFO)
@@ -320,7 +322,7 @@ def binary_pic(name_list):
         GrayImage=cv2.cvtColor(temp_image,cv2.COLOR_BGR2GRAY) 
         ret,thresh1=cv2.threshold(GrayImage,0,255,cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
         single_name = image.split('t/')[1]
-        print single_name
+        print(single_name)
         cv2.imwrite('../data/tmp/'+single_name,thresh1)
 
 # 获取汉字label映射表
@@ -397,7 +399,7 @@ def main(_):
         print ('=====================OCR RESULT=======================\n')
         # 打印出所有识别出来的结果（取top 1）
         for i in range(len(final_reco_text)):
-           print final_reco_text[i], 
+           print(final_reco_text[i],end="")
 
 if __name__ == "__main__":
     tf.app.run()

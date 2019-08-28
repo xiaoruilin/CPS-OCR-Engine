@@ -11,7 +11,7 @@ import argparse
 from argparse import RawTextHelpFormatter
 import fnmatch
 import os
-import cv2
+from cv2 import cv2
 import json
 import random
 import numpy as np

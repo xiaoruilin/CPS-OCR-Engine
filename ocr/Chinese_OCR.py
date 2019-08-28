@@ -43,7 +43,7 @@ tf.app.flags.DEFINE_integer('save_steps', 500, "the steps to save")
 tf.app.flags.DEFINE_string('checkpoint_dir', './checkpoint/', 'the checkpoint dir')
 tf.app.flags.DEFINE_string('train_data_dir', './dataset/train/', 'the train dataset dir')
 tf.app.flags.DEFINE_string('test_data_dir', './dataset/test/', 'the test dataset dir')
-tf.app.flags.DEFINE_string('log_dir', './log', 'the logging dir')
+tf.app.flags.DEFINE_string('log_dir1', './log', 'the logging dir')
 
 tf.app.flags.DEFINE_boolean('restore', False, 'whether to restore from checkpoint')
 tf.app.flags.DEFINE_boolean('epoch', 1, 'Number of epoches')
@@ -187,8 +187,8 @@ def train():
         coord = tf.train.Coordinator()
         threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
-        train_writer = tf.summary.FileWriter(FLAGS.log_dir + '/train', sess.graph)
-        test_writer = tf.summary.FileWriter(FLAGS.log_dir + '/val')
+        train_writer = tf.summary.FileWriter(FLAGS.log_dir1 + '/train', sess.graph)
+        test_writer = tf.summary.FileWriter(FLAGS.log_dir1 + '/val')
         start_step = 0
         # 可以从某个step下的模型继续训练
         if FLAGS.restore:
